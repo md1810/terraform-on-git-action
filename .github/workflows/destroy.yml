@@ -1,4 +1,4 @@
-name: Manually triggered workflow
+name: Manual trigger for Destroy Planned Terraform
 on:
   workflow_dispatch:
     inputs:
@@ -12,6 +12,24 @@ jobs:
     name: "Destroy AWS"
     runs-on: ubuntu-latest
     steps:
+    
+        - name: Checkout Repo
+          uses: actions/checkout@v1
+
+        - name: Terraform Init
+          uses: hashicorp/terraform-github-actions/init@v0.4.0
+          env:
+            GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+            TF_ACTION_WORKING_DIR: 'terraform'
+            AWS_REGION: 'eu-west-1'
+            AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+        - name: Terraform Validate
+          uses: hashicorp/terraform-github-actions/validate@v0.3.7
+    
+        
+        
         - name: AWS Plan Copy
           run: aws s3 cp s3://github-terraform-statefile/some_environment/terraform.tfstate terraform.tfstate
           id: copy
