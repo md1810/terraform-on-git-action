@@ -7,7 +7,7 @@ on:
 
 jobs:
   tf_fmt:
-    name: Deploy ECS
+    name: Deploy resource using Terraform
     runs-on: ubuntu-latest
     steps:
 
