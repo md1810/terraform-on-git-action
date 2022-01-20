@@ -42,10 +42,10 @@ jobs:
           run: terraform plan -destroy
           continue-on-error: true
 
-        - name: Replace provider Registry.terraform.io
-          id: replace
-          run: |
-            terraform state replace-provider registry.terraform.io/-/aws registry.terraform.io/hashicorp/aws -auto-approve
+#         - name: Replace provider Registry.terraform.io
+#           id: replace
+#           run: |
+#             terraform state replace-provider registry.terraform.io/-/aws registry.terraform.io/hashicorp/aws -auto-approve
             
         - name: Destroy resources jobs
           id: destroy
