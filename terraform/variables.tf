@@ -1,12 +1,11 @@
 # variables.tf
 # ECS_CODEdeploy_terraform
-#arn:aws:iam::874724229473:role/ECS_CODEdeploy_terraform
+
 
 variable "aws_region" {
   description = "The AWS region things are created in"
   default     = "eu-west-1"
 }
-
 
 variable "https_certificate_arn" {
   description = "Domain certificate for https"
