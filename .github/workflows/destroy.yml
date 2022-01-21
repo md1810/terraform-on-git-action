@@ -8,60 +8,20 @@ on:
         default: 'dev'
 
 jobs:
-  destroy:
-    name: "Destroy AWS"
+  issue_parser:
     runs-on: ubuntu-latest
+    name: Terraform destroy
     steps:
-    
-        - name: Checkout Repo
-          uses: actions/checkout@v1
-
-        - name: Terraform Init
-          uses: hashicorp/terraform-github-actions/init@v0.4.0
-          env:
-            GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-            TF_ACTION_WORKING_DIR: 'terraform'
-            AWS_REGION: 'eu-west-1'
-            AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-        - name: Terraform Validate
-          uses: hashicorp/terraform-github-actions/validate@v0.3.7
-    
-        
-        
-        - name: AWS Plan Copy
-          run: aws s3 cp s3://github-terraform-statefile/some_environment/terraform.tfstate terraform.tfstate
-          id: copy
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_REGION: 'eu-west-1'
-            
-            
-            #terraform providers
-            #terraform state replace-provider registry.terraform.io/-/aws  registry.terraform.io/hashicorp/aws -auto-approve
-        - name: Replace provider Registry.terraform.io
-          id: replace
-          run: |
-            terraform state replace-provider hashicorp/aws registry.acme.corp/acme/aws
-
-            
-
-        - name: Show Destroy plan
-          run: terraform plan -destroy
-          continue-on-error: true
-
-
-        - name: Destroy resources jobs
-          id: destroy
-          run: |
-            terraform destroy -auto-approve            
-
-        - name: Delete plan file
-          if: steps.destroy.outcome == 'success'
-          run: aws s3 rm s3://github-terraform-statefile/some_environment/terraform.tfstate
-          env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_REGION: 'eu-west-1'
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Terraform destroy
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        #TF_ACTION_WORKING_DIR: 'terraform'
+        AWS_REGION: 'eu-west-1'
+        AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      uses: actions/terraform-on-git-action@v1
+      with:
+        org_name: 'md1810'
+        repo_name: 'terraform-on-git-action'
