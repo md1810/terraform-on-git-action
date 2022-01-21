@@ -1,0 +1,18 @@
+# destroy.yml
+name: 'Terraform destroy'
+description: 'Destroy with terraform using remote state'
+inputs:
+  org_name:
+    description: 'In the format of <org>'
+    required: true
+    default: 'john'
+  repo_name:
+    description: 'In the format of <repo>'
+    required: true
+    default: 'doe'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repo_name }}
+    - ${{ inputs.org_name }}
