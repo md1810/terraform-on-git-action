@@ -28,7 +28,6 @@ jobs:
         repo_name: 'terraform-on-git-action'
     
     - name: Delete plan file
-      if: steps.destroy.outcome == 'success'
       run: aws s3 rm s3://github-terraform-statefile/some_environment/terraform.tfstate
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
