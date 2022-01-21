@@ -21,7 +21,7 @@ jobs:
         AWS_REGION: 'eu-west-1'
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      uses: daniyalj/terraform-destroy-actions@v3
+      uses: md1810/terraform-destroy-on-action@v1
       with:
         org_name: 'md1810'
         repo_name: 'terraform-on-git-action'
