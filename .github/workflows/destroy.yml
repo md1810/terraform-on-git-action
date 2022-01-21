@@ -44,7 +44,7 @@ jobs:
         - name: Replace provider Registry.terraform.io
           id: replace
           run: |
-            terraform state replace-provider -auto-approve -- -/null registry.terraform.io/hashicorp/aws
+            terraform state replace-provider -auto-approve -- -/null registry.terraform.io/hashicorp/null
             
 
         - name: Show Destroy plan
