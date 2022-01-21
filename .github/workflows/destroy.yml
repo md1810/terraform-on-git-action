@@ -44,7 +44,7 @@ jobs:
         - name: Replace provider Registry.terraform.io
           id: replace
           run: |
-            //go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
+            terraform state replace-provider ~/null registry.terraform.io/-/aws  -auto-approve
 
             
 
