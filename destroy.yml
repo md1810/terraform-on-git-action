@@ -1,9 +1,0 @@
-# destroy.yml
-name: 'Terraform destroy'
-description: 'Destroy with terraform using remote state'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - md1810
-    - terraform-on-git-action
