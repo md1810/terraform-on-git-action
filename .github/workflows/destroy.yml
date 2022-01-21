@@ -44,7 +44,7 @@ jobs:
         - name: Replace provider Registry.terraform.io
           id: replace
           run: |
-            terraform state replace-provider null registry.terraform.io/-/aws  -auto-approve
+            terraform state replace-provider hashicorp/aws registry.acme.corp/acme/aws
 
             
 
