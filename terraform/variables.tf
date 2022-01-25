@@ -84,7 +84,7 @@ variable "alb_name" {
 
 variable "alb_security_group_id" {
   description = "Enter the alb security group ID."
-  default     = ["sg-0df28990270b48f87"]
+  default     = ["sg-0df33cfc83780a0fe"]
   type        = list(string)
 }
 
@@ -168,6 +168,6 @@ variable "ecs_service_name" {
 
 variable "ecs_task_security_group_id" {
   description = "Enter the ecs task security group id."
-  default     = ["sg-0df28990270b48f87"]
+  default     = ["sg-0df33cfc83780a0fe"]
   type        = list(string)
 }
