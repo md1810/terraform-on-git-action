@@ -24,8 +24,8 @@ jobs:
       
       uses: md1810/terraform-destroy-on-action@v5.1
       with:
-        org_name: 'md1810'
-        repo_name: 'terraform-on-git-action'
+        org_name: ${{ secrets.INPUT_ORG_NAME }}
+        repo_name: ${{ secrets.INPUT_REPO_NAME }}
     
     - name: Delete plan file
       run: aws s3 rm s3://github-terraform-statefile/some_environment/terraform.tfstate
