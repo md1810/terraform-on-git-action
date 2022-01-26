@@ -174,7 +174,7 @@ variable "ecs_task_security_group_id" {
 
 variable "account_ids" {
   description = "The AWS account id"
-  default     = [""]
+  default     = ["078053088323"]
 }
 
 variable "app_name" {
