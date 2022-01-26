@@ -3,7 +3,7 @@ terraform{
         bucket         = "github-terraform-statefile"
         key            = "some_environment/terraform.tfstate"
         dynamodb_table         = "terraform-locks"
-        region                 = var.aws_region
+        region                 = "eu-west-1"
         encrypt                = true
         skip_region_validation = true
     }
