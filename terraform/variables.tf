@@ -171,3 +171,18 @@ variable "ecs_task_security_group_id" {
   default     = ["sg-0df33cfc83780a0fe"]
   type        = list(string)
 }
+
+variable "account_ids" {
+  description = "The AWS account id"
+  default     = [""]
+}
+
+variable "app_name" {
+  description = "tags for app name"
+  default     = "iamops"
+}
+
+variable "stage_name" {
+  description = "tags for stage name"
+  default     = "test"
+}
