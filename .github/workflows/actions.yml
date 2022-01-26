@@ -6,6 +6,7 @@ on:
       env:
         description: 'Environment'
         required: true
+        default: 'dev'
 jobs:
   tf_fmt:
     name: Deploy resource using Terraform
