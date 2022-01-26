@@ -1,10 +1,11 @@
 name: Deploy Infrastructure
 
 on:
-  push:
-    branches:
-      - main
-
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Environment'
+        required: true
 jobs:
   tf_fmt:
     name: Deploy resource using Terraform
